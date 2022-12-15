@@ -1,0 +1,111 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <title>Calculator</title>
+    <style>
+   h1{
+     
+       color: teal;
+      text-align: center;
+      font-weight: bold;
+      font-size: 40px;
+     
+   }
+   #cal{
+       height: 350px;
+       width: 25%;
+       border: 1px solid transparent;
+       margin: auto;
+       margin-top: 50px;
+       box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+   }
+  #display{
+       border: 1px solid transparent;
+       display: grid;
+       justify-content: center;
+       align-items: center;
+       height: 50px;
+       width: 75%;
+       margin: auto;
+       margin-top: 30px;
+       box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+       border-radius: 7px;
+      
+       overflow: auto;
+   }
+   #keyword{
+       width:75%;
+       height: 85%;
+       border: 1px solid transparent;
+       margin: auto;
+       margin-top: 10px;
+       display: grid;
+       grid-template-columns: repeat(4,1fr);
+       grid-template-rows: repeat(4,50px);
+       gap: 10px;
+   }
+  #keyword > div{
+      border: 1px solid white;
+      font-weight: bold;
+      width: 100%;
+      height: 85%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  }
+  .add{
+      background-color: black;
+      color: white;
+  }
+  #cancel{
+      background-color: rgb(255, 85, 0);
+      color: white;
+  }
+    </style>
+</head>
+<body>
+    <h1>Masai Calculator</h1>
+    <div id="cal">
+        <div id="display"></div>
+        <div id="keyword">
+   <div>1</div>
+   <div>2</div>
+   <div>3</div>
+   <div class="add">+</div>
+   <div>4</div>
+   <div>5</div>
+   <div>6</div>
+   <div class="add">-</div>
+   <div>7</div>
+   <div>8</div>
+   <div>9</div>
+   <div class="add">*</div>
+   <div id="cancel">C</div>
+   <div>0</div>
+   <div class="add">=</div>
+   <div class="add">/</div>
+</div>
+ </div>
+</body>
+</html>
+<script>
+   let x=document.querySelectorAll("#keyword>div");
+   let bag="";
+   for(let i=0;i<x.length;i++){
+       x[i].addEventListener("click",myCalculator)
+   }
+   function myCalculator(event){
+       let targetNumber=event.target.innerText;
+       if(targetNumber=="C"){
+           bag="";
+           document.querySelector("#display").innerText="";
+       } else if(targetNumber=="="){
+      document.querySelector("#display").innerText=eval(bag); 
+        }   else {
+           bag=bag+targetNumber;
+           document.querySelector("#display").innerText=bag;
+       }
+   }
+   </script>
